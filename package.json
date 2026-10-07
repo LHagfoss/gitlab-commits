@@ -1,0 +1,50 @@
+{
+  "name": "@lhagfoss/gitlab-commits",
+  "version": "0.1.0",
+  "description": "A responsive GitLab contribution graph for React, for gitlab.com and self-hosted instances.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": ["dist", "README.md", "LICENSE"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.tsx src/server.ts --format esm --dts --clean",
+    "dev": "tsup src/index.tsx src/server.ts --format esm --dts --watch",
+    "check": "tsc --noEmit",
+    "prepublishOnly": "bun run check && bun run build"
+  },
+  "publishConfig": { "access": "public" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LHagfoss/gitlab-commits.git"
+  },
+  "keywords": [
+    "gitlab",
+    "commits",
+    "contributions",
+    "react",
+    "component",
+    "graph",
+    "self-hosted"
+  ],
+  "peerDependencies": { "react": ">=18" },
+  "devDependencies": {
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.18",
+    "react": "^19.2.8",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}
